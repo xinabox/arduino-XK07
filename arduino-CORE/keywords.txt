@@ -1,0 +1,30 @@
+#######################################
+# Syntax Coloring Map For xCore
+#######################################
+
+#######################################
+# Instances 				(KEYWORD1)
+#######################################
+
+xCore	KEYWORD1
+
+#######################################
+# Methods and Functions 	(KEYWORD2)
+#######################################
+
+request16	KEYWORD2
+write	KEYWORD2
+write1	KEYWORD2
+write8	KEYWORD2
+write16	KEYWORD2
+read8	KEYWORD2
+readStream	KEYWORD2
+readS16	KEYWORD2
+read16_LE	KEYWORD2
+readS16_LE	KEYWORD2
+read24	KEYWORD2
+ping	KEYWORD2
+
+#######################################
+# Constants 				(LITERAL1)
+#######################################
