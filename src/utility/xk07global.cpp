@@ -12,7 +12,7 @@ void xk07_global::redDebug()
     while (1)
     {
         //watchdog();
-        digitalWrite(CORE_RED, !digitalRead(CORE_RED));
+        digitalWrite(LED_RED, !digitalRead(LED_RED));
         delay(500);
     }
 }
@@ -26,7 +26,7 @@ void xk07_global::blueDebug()
         setup = true;
     }
 
-    digitalWrite(CORE_BLUE, HIGH);
+    digitalWrite(LED_BUILTIN, HIGH);
 }
 
 void xk07_global::greenDebug()
@@ -37,27 +37,27 @@ void xk07_global::greenDebug()
         pinModeOutput();
         setup = true;
     }
-    pinMode(CORE_GREEN, OUTPUT);
-    digitalWrite(CORE_GREEN, HIGH);
+    pinMode(LED_GREEN, OUTPUT);
+    digitalWrite(LED_GREEN, HIGH);
 }
 
 void xk07_global::pinModeOutput()
 {
     watchdog();
-    pinMode(CORE_RED, OUTPUT);
-    pinMode(CORE_GREEN, OUTPUT);
-    pinMode(CORE_BLUE, OUTPUT);
-    digitalWrite(CORE_RED, LOW);
-    digitalWrite(CORE_GREEN, LOW);
-    digitalWrite(CORE_BLUE, LOW);
+    pinMode(LED_RED, OUTPUT);
+    pinMode(LED_GREEN, OUTPUT);
+    pinMode(LED_BUILTIN, OUTPUT);
+    digitalWrite(LED_RED, LOW);
+    digitalWrite(LED_GREEN, LOW);
+    digitalWrite(LED_BUILTIN, LOW);
 }
 
 void xk07_global::rgbOff()
 {
     watchdog();
-    digitalWrite(CORE_RED, LOW);
-    digitalWrite(CORE_GREEN, LOW);
-    digitalWrite(CORE_BLUE, LOW);
+    digitalWrite(LED_RED, LOW);
+    digitalWrite(LED_GREEN, LOW);
+    digitalWrite(LED_BUILTIN, LOW);
 }
 
 void xk07_global::watchdog()

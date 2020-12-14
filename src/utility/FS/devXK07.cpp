@@ -127,16 +127,29 @@ uint8_t *devXK07::payloadA(int16_t _lastRSSI)
 	{
 		global.watchdog();
 		xSL01 SL01;
-		SL01.begin();
+		if (!sl01flag)
+		{
+			sl01flag = true;
+			SL01.begin();
+		}
+
 		SL01.poll();
-		// if (SL01.checkVersion() == 1)
-		// {
+		if (SL01.checkVersion() == 1)
+		{
 			payload += "$SL01,";
 			payload += String((uint32_t)SL01.getUVA());
 			payload += ",";
 			payload += String((uint32_t)SL01.getUVB());
 			payload += ",";
-//		}
+		}
+		else
+		{
+			payload += "$SL01,";
+			payload += "";
+			payload += ",";
+			payload += "";
+			payload += ",";
+		}
 		payload += String(SL01.getUVIndex(), 1);
 		payload += ",";
 		payload += String(SL01.getLUX(), 0);
@@ -144,6 +157,7 @@ uint8_t *devXK07::payloadA(int16_t _lastRSSI)
 	}
 	else
 	{
+		sl01flag = false;
 		payload += "$SL01,ERR,*,";
 	}
 
@@ -242,8 +256,8 @@ uint8_t *devXK07::payloadB(int16_t _lastRSSI)
 		payload += String(SN01.getTime());
 		payload += ",";
 
-SerialUSB.println(SN01.getLatitude(), 5);
-SerialUSB.println(SN01.getLongitude(), 5);
+		SerialUSB.println(SN01.getLatitude(), 5);
+		SerialUSB.println(SN01.getLongitude(), 5);
 		if ((SN01.getHDOP() < 10.0) && (SN01.getHDOP() > 0.0))
 		{
 			global.watchdog();

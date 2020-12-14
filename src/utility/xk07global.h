@@ -14,7 +14,7 @@
 #define LED_B 13
 #endif
 
-#define XK07_FW_VERSION "2.1.5"
+#define XK07_FW_VERSION "2.1.6"
 
 class xk07_global
 {

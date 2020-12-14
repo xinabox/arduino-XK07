@@ -684,13 +684,24 @@ bool logXK07::LogSL01(void)
     if ((xCore.ping(addr.SL01_ADDRESS_1) & xCore.ping(addr.SL01_ADDRESS_2) == true) || (xCore.ping(addr.SL01_ADDRESS_3)))
     {
         xSL01 SL01;
-        if (SL01.begin())
+        if (!sl01flag)
+        {
+            sl01flag=true;
+            SL01.begin();
+        }
+
+        if (sl01flag)
         {
             SL01.poll();
             if (SL01.checkVersion() == 1)
             {
                 logData(log_index++, SL01.getUVA());
                 logData(log_index++, SL01.getUVB());
+            }
+            else
+            {
+                logData(log_index++, "");
+                logData(log_index++, "");
             }
             logData(log_index++, SL01.getUVIndex());
             logData(log_index++, SL01.getLUX());
@@ -707,6 +718,7 @@ bool logXK07::LogSL01(void)
     }
     else
     {
+        sl01flag=false;
         logData(log_index++, "");
         logData(log_index++, "");
         logData(log_index++, "");

@@ -142,6 +142,7 @@ class logXK07: public devXK07
 		void enableExcelLogOutput(bool _enable);
 
   	private:
+	  bool sl01flag=false;
 
 	  	xSG33 SG33 = xSG33();
 

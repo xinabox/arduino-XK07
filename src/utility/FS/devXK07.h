@@ -115,6 +115,7 @@ class devXK07 : public xSW01, public xSL01, public xSI01, public xSG33, public x
 	private:
 		friend class FlightStation;
 
+		bool sl01flag=false;
 		i2cAddr i2c;
 
 		packetData pdata;
